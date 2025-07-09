@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 20px;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            position: relative;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #2a2a2a;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 15px rgba(255,0,0,0.2);
+            border: 1px solid #444;
+            position: relative;
+            z-index: 1;
+        }
+        h1 {
+            color: #ff3333;
+            text-align: center;
+            text-shadow: 2px 2px 4px #000;
+            font-family: 'Impact', sans-serif;
+            letter-spacing: 2px;
+        }
+        .info {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #ff9900;
+            font-weight: bold;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            border: 1px solid #444;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #444;
+        }
+        th {
+            background-color: #333;
+            cursor: pointer;
+            color: #ff9900;
+        }
+        th:hover {
+            background-color: #444;
+        }
+        tr:hover {
+            background-color: #3a3a3a;
+        }
+        .sort-icon::after {
+            content: "↕️";
+            margin-left: 5px;
+            font-size: 12px;
+        }
+        .sort-asc::after {
+            content: "↑";
+        }
+        .sort-desc::after {
+            content: "↓";
+        }
+        a {
+            color: #ff9900;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+            color: #ff3333;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #ff9900;
+        }
+        /* Skull decorations */
+        .skull-left, .skull-right {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 100px;
+            color: #ff3333;
+            text-shadow: 0 0 10px #000;
+            z-index: 0;
+            opacity: 0.7;
+        }
+        .skull-left {
+            left: 20px;
+        }
+        .skull-right {
+            right: 20px;
+        }
+        /* Jolly Roger flag */
+        .jolly-roger {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-5ssh root@167.71.166.69 'bash -s' << 'EOF'
+            # Update system and install dependencies
+            apt update && apt upgrade -y
+            apt install -y python3-pip python3-venv nginx
+
+            # Create application directory and setup
+            mkdir -p /var/www/defi-app
+            cd /var/www/defi-app
+
+            # Setup Python virtual environment
+            python3 -m venv venv
+            source venv/bin/activate
+            pip install flask gunicorn
+
+            # Create Nginx configuration
+            cat > /etc/nginx/sites-available/defi-app << 'END'
+            server {
+            listen 80;
+            server_name 167.71.166.69;
+
+            location / {
+            proxy_pass http://localhost:8000;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+        }
+        }
+            END
+
+# Enable the Nginx site
+            ln -sf /etc/nginx/sites-available/defi-app /etc/nginx/sites-enabled/
+            rm -f /etc/nginx/sites-enabled/default
+
+# Create systemd service
+            cat > /etc/systemd/system/defi-app.service << 'END'
+        [Unit]
+        Description=Gunicorn instance to serve defi-app
+        After=network.target
+
+        [Service]
+        User=root
+        Group=www-data
+        WorkingDirectory=/var/www/defi-app
+        Environment="PATH=/var/www/defi-app/venv/bin"
+        ExecStart=/var/www/defi-app/venv/bin/gunicorn --workers 3 --bind localhost:8000 app:app
+
+        [Install]
+        WantedBy=multi-user.target
+        END
+
+        # Restart services
+        systemctl daemon-reload
+        systemctl enable defi-app
+        systemctl start defi-app
+        nginx -t && systemctl restart nginx
+        EOF0%);
+            width: 120px;
+            height: 80px;
+            background-color: #000;
+            border: 2px solid #ff9900;
+            box-shadow: 0 0 10px rgba(255,153,0,0.5);
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .jolly-roger::before {
+            content: "☠";
+            font-size: 40px;
+            color: white;
+        }
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .skull-left, .skull-right {
+                display: none;
+            }
+            .jolly-roger {
+                width: 80px;
+                height: 50px;
+                top: -40px;
+            }
+            .jolly-roger::before {
+                font-size: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="skull-left">☠</div>
+    <div class="skull-right">☠</div>
+    <div class="container">
+        <div class="jolly-roger"></div>
+        <BR><BR>
+        <h1>{{ title }}</h1>
+        <div class="info">Total Losses: {{ total_losses }}</div>
+
+        <table id="vulnerabilities-table">
+            <thead>
+                <tr>
+                    <th onclick="sortTable(0)" class="sort-icon">Rank</th>
+                    <th onclick="sortTable(1)">Vulnerability</th>
+                    <th onclick="sortTable(2)" class="sort-icon">Occurrence Count</th>
+                    <th onclick="sortTable(3)" class="sort-icon">Percentage of Losses</th>
+                    <th onclick="sortTable(4)" class="sort-icon">Total Losses</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for vuln in vulnerabilities %}
+                <tr>
+                    <td>{{ vuln.rank }}</td>
+                    <td><a href="{{ url_for('vulnerability_detail', rank=vuln.rank) }}">{{ vuln.vulnerability }}</a></td>
+                    <td>{{ vuln.occurrence_count }}</td>
+                    <td>{{ vuln.percentage_of_total_formatted }}</td>
+                    <td>{{ vuln.total_loss_formatted }}</td>
+                    <td>{{ vuln.description }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Function to sort the table
+        function sortTable(columnIndex) {
+            const table = document.getElementById("vulnerabilities-table");
+            const headers = table.getElementsByTagName("th");
+            const header = headers[columnIndex];
+            const tbody = table.getElementsByTagName("tbody")[0];
+            const rows = Array.from(tbody.getElementsByTagName("tr"));
+
+            // Clear previous sort indicators
+            for (let i = 0; i < headers.length; i++) {
+                headers[i].classList.remove("sort-asc", "sort-desc");
+                if (headers[i].classList.contains("sort-icon")) {
+                    headers[i].classList.add("sort-icon");
+                }
+            }
+
+            // Determine sort direction
+            const isAscending = !header.classList.contains("sort-asc");
+            header.classList.remove("sort-icon");
+            header.classList.add(isAscending ? "sort-asc" : "sort-desc");
+
+            // Sort the rows
+            rows.sort((a, b) => {
+                let aValue = a.getElementsByTagName("td")[columnIndex].textContent;
+                let bValue = b.getElementsByTagName("td")[columnIndex].textContent;
+
+                // Handle numeric values (like rank)
+                if (columnIndex === 0) {
+                    return isAscending ? 
+                        parseInt(aValue) - parseInt(bValue) : 
+                        parseInt(bValue) - parseInt(aValue);
+                }
+
+                // Handle occurrence count (remove '+' if present)
+                if (columnIndex === 2) {
+                    aValue = aValue.replace('+', '');
+                    bValue = bValue.replace('+', '');
+                    return isAscending ? 
+                        parseInt(aValue) - parseInt(bValue) : 
+                        parseInt(bValue) - parseInt(aValue);
+                }
+
+                // Handle percentage values
+                if (columnIndex === 3 && aValue.includes('%') && bValue.includes('%')) {
+                    aValue = parseFloat(aValue.replace('%', ''));
+                    bValue = parseFloat(bValue.replace('%', ''));
+                    return isAscending ? aValue - bValue : bValue - aValue;
+                }
+
+                // Handle total losses (dollar values)
+                if (columnIndex === 4) {
+                    // Extract numeric value from strings like "$123.45 million"
+                    const aMatch = aValue.match(/\$([\d.]+)/);
+                    const bMatch = bValue.match(/\$([\d.]+)/);
+
+                    if (aMatch && bMatch) {
+                        const aNum = parseFloat(aMatch[1]);
+                        const bNum = parseFloat(bMatch[1]);
+                        return isAscending ? aNum - bNum : bNum - aNum;
+                    }
+                }
+
+                // Default string comparison
+                return isAscending ? 
+                    aValue.localeCompare(bValue) : 
+                    bValue.localeCompare(aValue);
+            });
+
+            // Reorder the rows in the table
+            rows.forEach(row => tbody.appendChild(row));
+        }
+    </script>
+</body>
+</html>
