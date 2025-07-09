@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ vulnerability.vulnerability }} - {{ title }}</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 20px;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            position: relative;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #2a2a2a;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 15px rgba(255,0,0,0.2);
+            border: 1px solid #444;
+            position: relative;
+            z-index: 1;
+        }
+        h1, h2 {
+            color: #ff3333;
+            text-shadow: 2px 2px 4px #000;
+            font-family: 'Impact', sans-serif;
+            letter-spacing: 2px;
+        }
+        .info {
+            margin-bottom: 20px;
+            color: #ff9900;
+        }
+        .stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .stat-box {
+            flex: 1;
+            min-width: 200px;
+            padding: 15px;
+            background-color: #333;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            border: 1px solid #444;
+        }
+        .stat-label {
+            font-size: 14px;
+            color: #ff9900;
+            margin-bottom: 5px;
+        }
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #e0e0e0;
+        }
+        .description {
+            margin-bottom: 30px;
+            line-height: 1.6;
+            background-color: #333;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #444;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            border: 1px solid #444;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #444;
+        }
+        th {
+            background-color: #333;
+            color: #ff9900;
+        }
+        tr:hover {
+            background-color: #3a3a3a;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #ff9900;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+            color: #ff3333;
+        }
+        .total-losses {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+            text-align: right;
+            color: #ff3333;
+            text-shadow: 1px 1px 2px #000;
+        }
+        /* Skull decorations */
+        .skull-left, .skull-right {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 100px;
+            color: #ff3333;
+            text-shadow: 0 0 10px #000;
+            z-index: 0;
+            opacity: 0.7;
+        }
+        .skull-left {
+            left: 20px;
+        }
+        .skull-right {
+            right: 20px;
+        }
+        /* Jolly Roger flag */
+        .jolly-roger {
+            position: absolute;
+            top: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 80px;
+            background-color: #000;
+            border: 2px solid #ff9900;
+            box-shadow: 0 0 10px rgba(255,153,0,0.5);
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .jolly-roger::before {
+            content: "☠";
+            font-size: 40px;
+            color: white;
+        }
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .skull-left, .skull-right {
+                display: none;
+            }
+            .jolly-roger {
+                width: 80px;
+                height: 50px;
+                top: -40px;
+            }
+            .jolly-roger::before {
+                font-size: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="skull-left">☠</div>
+    <div class="skull-right">☠</div>
+    <div class="container">
+        <div class="jolly-roger"></div>
+        <a href="{{ url_for('index') }}" class="back-link">← Back to All Vulnerabilities</a>
+
+        <h1>{{ vulnerability.vulnerability }}</h1>
+
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-label">Rank</div>
+                <div class="stat-value">#{{ vulnerability.rank }}</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Occurrence Count</div>
+                <div class="stat-value">{{ vulnerability.occurrence_count }}</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Percentage of Losses</div>
+                <div class="stat-value">{{ vulnerability.percentage_of_losses }}</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Total Losses</div>
+                <div class="stat-value">{{ vulnerability.total_loss_formatted }}</div>
+            </div>
+        </div>
+
+        <div class="description">
+            <h2>Description</h2>
+            <p>{{ vulnerability.description }}</p>
+        </div>
+
+        <h2>Examples ({{ vulnerability.examples|length }})</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Loss</th>
+                    <th>Percentage</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for example in vulnerability.examples %}
+                <tr>
+                    <td>{{ example.name }}</td>
+                    <td>{{ example.date }}</td>
+                    <td>
+                        {% if example.loss_millions is defined %}
+                            ${{ example.loss_millions }} million
+                        {% else %}
+                            {{ example.loss }}
+                        {% endif %}
+                    </td>
+                    <td>{{ example.percentage_formatted }}</td>
+                    <td>
+                        {{ example.details }}
+                        {% if example.reference %}
+                        <br>
+                        <a href="{{ example.reference }}" target="_blank">Reference</a>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="total-losses">
+            Total Losses: {{ vulnerability.total_loss_formatted }}
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,672 @@
+{
+  "title": "Top 10 DeFi Vulnerabilities - 2024-Present",
+  "analysis_date": "2025-01-09",
+  "total_losses": "$8,836.2 million",
+  "total_incidents_analyzed": "237+",
+  "data_sources": [
+    "Rekt News Leaderboard (https://rekt.news/leaderboard)",
+    "Three Sigma Security Research",
+    "Halborn Security Reports",
+    "Chainalysis Crime Reports",
+    "FBI/IC3 Alerts",
+    "Real-time incident analysis"
+  ],
+  "major_incidents_2025": [
+    {
+      "name": "Bybit",
+      "date": "2025-02-21",
+      "loss_millions": 1436.0,
+      "details": "Largest crypto theft in history. Lazarus Group exploited cold wallet through TraderTraitor campaign",
+      "reference": "https://www.cnbc.com/2025/02/21/hackers-steal-1point5-billion-from-exchange-bybit-biggest-crypto-heist.html"
+    },
+    {
+      "name": "Cetus Protocol",
+      "date": "2025-05-22",
+      "loss_millions": 223.0,
+      "details": "Arithmetic overflow bug in liquidity calculation function",
+      "reference": "https://www.halborn.com/blog/post/explained-the-cetus-hack-may-2025"
+    }
+  ],
+  "vulnerabilities": [
+    {
+      "rank": 1,
+      "vulnerability": "Private Key Compromise",
+      "occurrence_count": "50+",
+      "total_loss_millions": 2497.5,
+      "percentage_of_total": "28.3%",
+      "description": "Unauthorized access to private keys through social engineering, malware, or poor key management.  Top mitigations include multi-signature wallets, HSMs, timelock mechanisms, key rotation and access control, threshold cryptography, transaction monitoring and anomaly detection, cold storage and air-gap'd systems, smart-contract-based controls, insurance/risk management, zero knowledge proofs, operational security, decentralized key management, emergency/incident response, security audits, layered defenses.",
+
+      "examples": [
+        {
+          "name": "Bybit",
+          "date": "2025-02-21",
+          "loss_millions": 1436.0,
+          "details": "Lazarus Group compromised cold wallet through TraderTraitor malware campaign targeting Safe developer",
+          "reference": "https://www.ic3.gov/PSA/2025/PSA250226"
+        },
+        {
+          "name": "DMM Bitcoin",
+          "date": "2024-05-31",
+          "loss_millions": 305.0,
+          "details": "Social engineering attack on Ginco wallet provider employee",
+          "reference": "https://www.halborn.com/blog/post/explained-the-dmm-bitcoin-hack-may-2024"
+        },
+        {
+          "name": "PlayDapp",
+          "date": "2024-02",
+          "loss_millions": 290.0,
+          "details": "Private key vulnerability exploited to mint unauthorized tokens",
+          "reference": "https://decrypt.co/297206/largest-crypto-exploits-hacks-2024"
+        },
+        {
+          "name": "WazirX",
+          "date": "2024-07-18",
+          "loss_millions": 234.9,
+          "details": "Multi-sig compromise leading to unauthorized withdrawals",
+          "reference": "https://coingeek.com/defi-hacks-of-2024/"
+        },
+        {
+          "name": "BTC Turk",
+          "date": "2024-06-22",
+          "loss_millions": 54.0,
+          "details": "Hot wallet private keys compromised",
+          "reference": "https://decrypt.co/297206/largest-crypto-exploits-hacks-2024"
+        },
+        {
+          "name": "BingX",
+          "date": "2024-09",
+          "loss_millions": 52.0,
+          "details": "Hot wallet access across multiple blockchains by Lazarus Group",
+          "reference": "https://www.halborn.com/blog/post/year-in-review-the-biggest-defi-hacks-of-2024"
+        },
+        {
+          "name": "Gala Games",
+          "date": "2024-05-20",
+          "loss_millions": 22.3,
+          "details": "Compromised deployer account",
+          "reference": "https://immunebytes.com/blog/list-of-compromised-private-key-crypto-hacks/"
+        },
+        {
+          "name": "Others",
+          "date": "Various",
+          "loss_millions": 103.3,
+          "details": "Multiple smaller incidents",
+          "reference": "Various sources"
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "vulnerability": "Smart Contract Logic Errors",
+      "occurrence_count": "52",
+      "total_loss_millions": 1019.5,
+      "percentage_of_total": "11.5%",
+      "description": "Flaws in smart contract logic allowing unintended behavior.  Mitigations include static analysis tools, formal verification, comprehensive testing suites, 3rd party audits, gradual rollout and staging, upgradability patterns, circuit breakers and emergency controls, invariant monitoring, modular architecture, battle-tested libraries, documentation and specification, CI security, bug bounty programs, simulation and modeling, design patterns for safety, multi-language implementations, governance and time clock controls, runtime verification, layered security architecture, and development best practices",
+      "examples": [
+        {
+          "name": "PlayDapp",
+          "date": "2024-02",
+          "loss_millions": 290.0,
+          "details": "Access control vulnerability in minting function",
+          "reference": "https://www.halborn.com/blog/post/year-in-review-the-biggest-defi-hacks-of-2024"
+        },
+        {
+          "name": "Cetus Protocol",
+          "date": "2025-05-22",
+          "loss_millions": 223.0,
+          "details": "Overflow bug in checked_shlw function for liquidity calculations",
+          "reference": "https://www.halborn.com/blog/post/explained-the-cetus-hack-may-2025"
+        },
+        {
+          "name": "Gala Games",
+          "date": "2024-05",
+          "loss_millions": 216.0,
+          "details": "Unused deployer account with mint privileges compromised",
+          "reference": "https://www.halborn.com/blog/post/year-in-review-the-biggest-defi-hacks-of-2024"
+        },
+        {
+          "name": "Munchables",
+          "date": "2024-03-26",
+          "loss_millions": 62.5,
+          "details": "Rogue developer exploited upgradeable proxy",
+          "reference": "https://coingeek.com/defi-hacks-of-2024/"
+        },
+        {
+          "name": "GAMEE",
+          "date": "2024-01-22",
+          "loss_millions": 16.0,
+          "details": "Unauthorized smart contract access",
+          "reference": "https://medium.com/web3-writers-guild/learning-from-the-biggest-defi-hacks-of-january-2024-0caa1b4af45b"
+        },
+        {
+          "name": "Gamma Strategies",
+          "date": "2024-01-04",
+          "loss_millions": 6.4,
+          "details": "Deposit proxy vulnerability",
+          "reference": "https://medium.com/web3-writers-guild/learning-from-the-biggest-defi-hacks-of-january-2024-0caa1b4af45b"
+        },
+        {
+          "name": "Abracadabra Finance",
+          "date": "2024-01-30",
+          "loss_millions": 6.4,
+          "details": "Smart contract vulnerability",
+          "reference": "https://medium.com/web3-writers-guild/learning-from-the-biggest-defi-hacks-of-january-2024-0caa1b4af45b"
+        },
+        {
+          "name": "Others",
+          "date": "Various",
+          "loss_millions": 199.2,
+          "details": "Multiple incidents across protocols",
+          "reference": "Various sources"
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "vulnerability": "Input Validation/Overflow Vulnerabilities",
+      "occurrence_count": "25",
+      "total_loss_millions": 313.2,
+      "percentage_of_total": "3.5%",
+      "description": "Failure to properly validate inputs or handle arithmetic operations.  Mitigations include SafeMath libraries, Solidity 0.8+ built-in overflow protection, Input sanitization and bounds checking, OpenZeppelin SafeCast, Explicit require statements for range validation, Fuzz testing, Static analysis tools, Custom overflow-safe math functions, Type checking and validation, Comprehensive unit testing, Input parameter validation modifiers, Range checks before arithmetic operations, Assembly-level overflow detection, Property-based testing, Formal verification of arithmetic operations",
+      "examples": [
+        {
+          "name": "Cetus Protocol",
+          "date": "2025-05-22",
+          "loss_millions": 223.0,
+          "details": "Arithmetic overflow in liquidity calculation, faulty checked_shlw implementation",
+          "reference": "https://dedaub.com/blog/the-cetus-amm-200m-hack-how-a-flawed-overflow-check-led-to-catastrophic-loss/"
+        },
+        {
+          "name": "KiloEx",
+          "date": "2025",
+          "loss_millions": 7.0,
+          "details": "Lack of access controls in DEX",
+          "reference": "https://www.techtarget.com/searchsecurity/tip/Smart-contract-vulnerabilities-and-how-to-mitigate-them"
+        },
+        {
+          "name": "Gamma Strategies",
+          "date": "2024-01-04",
+          "loss_millions": 6.4,
+          "details": "Price change threshold vulnerability",
+          "reference": "https://medium.com/web3-writers-guild/learning-from-the-biggest-defi-hacks-of-january-2024-0caa1b4af45b"
+        },
+        {
+          "name": "Wise Lending",
+          "date": "2024-01-12",
+          "loss_millions": 0.45,
+          "details": "Precision loss vulnerability",
+          "reference": "https://medium.com/web3-writers-guild/learning-from-the-biggest-defi-hacks-of-january-2024-0caa1b4af45b"
+        },
+        {
+          "name": "BasketDAO",
+          "date": "2024-01-17",
+          "loss_millions": 0.11,
+          "details": "TransferFrom vulnerability",
+          "reference": "https://medium.com/web3-writers-guild/learning-from-the-biggest-defi-hacks-of-january-2024-0caa1b4af45b"
+        },
+        {
+          "name": "Others",
+          "date": "Various",
+          "loss_millions": 76.24,
+          "details": "Multiple validation failures",
+          "reference": "Various sources"
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "vulnerability": "Flash Loan Attacks",
+      "occurrence_count": "20+",
+      "total_loss_millions": 524.6,
+      "percentage_of_total": "5.9%",
+      "description": "Exploitation using uncollateralized flash loans.  Mitigations include Oracle manipulation resistance, Time-weighted average price (TWAP) oracles, Multi-block transaction requirements, Commit-reveal schemes, Flash loan detection and blocking, Liquidity depth checks, Price impact limits, Circuit breakers for large trades, Multi-oracle price feeds, Minimum holding periods, Transaction value limits, Reentrancy guards, State change delays, Atomic transaction restrictions, Sandwich attack protection, MEV protection mechanisms, Governance timelock requirements, Emergency pause functions, Slippage protection, Market impact analysis",
+      "examples": [
+        {
+          "name": "Beanstalk Farms",
+          "date": "2022-04-17",
+          "loss_millions": 182.0,
+          "details": "Flash loan of $1B to gain 79% voting power",
+          "reference": "https://cointelegraph.com/news/beanstalk-farms-loses-182m-in-defi-governance-exploit"
+        },
+        {
+          "name": "Cream Finance",
+          "date": "2021-08-30",
+          "loss_millions": 130.0,
+          "details": "Flash loan combined with reentrancy",
+          "reference": "https://immunebytes.com/blog/top-10-flash-loan-attacks/"
+        },
+        {
+          "name": "PancakeBunny",
+          "date": "2021-05-20",
+          "loss_millions": 45.0,
+          "details": "Price manipulation through flash loans",
+          "reference": "https://immunebytes.com/blog/top-10-flash-loan-attacks/"
+        },
+        {
+          "name": "Spartan Protocol",
+          "date": "2021-05-02",
+          "loss_millions": 30.0,
+          "details": "$60M flash loan to manipulate liquidity",
+          "reference": "https://immunebytes.com/blog/top-10-flash-loan-attacks/"
+        },
+        {
+          "name": "XToken",
+          "date": "2021-05-12",
+          "loss_millions": 24.0,
+          "details": "Flash loan exploit on Ethereum",
+          "reference": "https://immunebytes.com/blog/top-10-flash-loan-attacks/"
+        },
+        {
+          "name": "Radiant Capital",
+          "date": "2024-01-02",
+          "loss_millions": 4.5,
+          "details": "Precision expansion vulnerability",
+          "reference": "https://medium.com/web3-writers-guild/learning-from-the-biggest-defi-hacks-of-january-2024-0caa1b4af45b"
+        },
+        {
+          "name": "Others",
+          "date": "Various",
+          "loss_millions": 109.1,
+          "details": "Multiple flash loan exploits",
+          "reference": "Various sources"
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "vulnerability": "Price Oracle Manipulation",
+      "occurrence_count": "22",
+      "total_loss_millions": 376.7,
+      "percentage_of_total": "4.3%",
+      "description": "Exploitation of price feed mechanisms.  Mitigations include Time-weighted average price (TWAP) oracles, Multi-oracle aggregation, Chainlink price feeds, Band Protocol integration, Decentralized oracle networks, Price deviation limits, Circuit breakers for extreme price movements, Oracle heartbeat monitoring, Failsafe price bounds, Backup oracle systems, Volume-weighted average price (VWAP), Moving average calculations, Price impact analysis, Liquidity depth requirements, Oracle update frequency limits, Median price calculations, Outlier detection algorithms, Oracle reputation systems, Cross-chain price verification, Emergency oracle override mechanisms, Price staleness checks, Oracle front-running protection, Sandwich attack mitigation, MEV protection, Oracle committee governance, Multi-source price validation, Real-time anomaly detection, Oracle dispute mechanisms, Price feed redundancy, Oracle security monitoring",
+      "examples": [
+        {
+          "name": "BonqDAO",
+          "date": "2023-02-01",
+          "loss_millions": 120.0,
+          "details": "WALBT token price manipulation",
+          "reference": "https://medium.com/rektify-ai/learning-from-the-biggest-defi-hacks-of-2023-1cab753ac4ea"
+        },
+        {
+          "name": "Curve Finance",
+          "date": "2023-07-30",
+          "loss_millions": 70.0,
+          "details": "Vyper compiler bug affecting price calculations",
+          "reference": "https://cointelegraph.com/news/curve-finance-pools-exploited-over-24-reentrancy-vulnerability"
+        },
+        {
+          "name": "PancakeBunny",
+          "date": "2021-05-19",
+          "loss_millions": 45.0,
+          "details": "BUNNY token price manipulation",
+          "reference": "https://www.startupdefense.io/cyberattacks/flash-loan-attack"
+        },
+        {
+          "name": "Spartan Protocol",
+          "date": "2021-05",
+          "loss_millions": 30.0,
+          "details": "Liquidity pool manipulation",
+          "reference": "https://immunebytes.com/blog/top-10-flash-loan-attacks/"
+        },
+        {
+          "name": "Elephant Money",
+          "date": "2022-04-13",
+          "loss_millions": 22.2,
+          "details": "TRUNK token oracle manipulation",
+          "reference": "https://immunebytes.com/blog/top-10-flash-loan-attacks/"
+        },
+        {
+          "name": "Others",
+          "date": "Various",
+          "loss_millions": 89.5,
+          "details": "Multiple oracle exploits",
+          "reference": "Various sources"
+        }
+      ]
+    },
+    {
+      "rank": 6,
+      "vulnerability": "Governance Attacks",
+      "occurrence_count": "15",
+      "total_loss_millions": 268.6,
+      "percentage_of_total": "3.0%",
+      "description": "Recursive function calls before state updates.  Mitigations include Timelocks for proposal execution, Multi-signature requirements, Quorum thresholds, Voting power caps, Token lockup periods, Proposal deposit requirements, Voting delegation limits, Emergency veto mechanisms, Gradual voting power distribution, Anti-whale measures, Quadratic voting, Conviction voting, Reputation-based voting, Time-weighted voting power, Proposal cool-down periods, Execution delays, Guardian roles, Emergency pause functions, Snapshot voting, Off-chain governance validation, Sybil resistance mechanisms, Voting power decay, Proposal review periods, Multi-stage voting, Supermajority requirements, Voter participation minimums, Flash loan voting prevention, Governance token vesting, Voting power history tracking, Cross-chain governance coordination, Governance insurance mechanisms, Proposal categorization and thresholds, Emergency governance procedures, Governance audit requirements, Voter identity verification, Governance attack simulation testing",
+      "examples": [
+        {
+          "name": "Cream Finance",
+          "date": "2021-08-30",
+          "loss_millions": 130.0,
+          "details": "Reentrancy allowing borrowing while withdrawing collateral",
+          "reference": "https://immunebytes.com/blog/top-10-flash-loan-attacks/"
+        },
+        {
+          "name": "Curve Finance",
+          "date": "2023-07-30",
+          "loss_millions": 70.0,
+          "details": "Vyper compiler bug in reentrancy locks",
+          "reference": "https://cointelegraph.com/news/curve-finance-pools-exploited-over-24-reentrancy-vulnerability"
+        },
+        {
+          "name": "The DAO",
+          "date": "2016-06",
+          "loss_millions": 60.0,
+          "details": "Historic reentrancy leading to Ethereum hard fork",
+          "reference": "https://www.cyfrin.io/blog/what-is-a-reentrancy-attack-solidity-smart-contracts"
+        },
+        {
+          "name": "dForce Protocol",
+          "date": "2023-02-10",
+          "loss_millions": 3.6,
+          "details": "Read-only reentrancy in Curve oracle",
+          "reference": "https://www.theblock.co/post/210518/dforce-protocol-drained-of-3-6-million-in-reentrancy-attack"
+        },
+        {
+          "name": "Nebula Revelation",
+          "date": "2024-01-25",
+          "loss_millions": 0.18,
+          "details": "Staking contract reentrancy",
+          "reference": "https://medium.com/web3-writers-guild/learning-from-the-biggest-defi-hacks-of-january-2024-0caa1b4af45b"
+        },
+        {
+          "name": "Others",
+          "date": "Various",
+          "loss_millions": 3.82,
+          "details": "Multiple reentrancy incidents",
+          "reference": "Various sources"
+        }
+      ]
+    },
+    {
+      "rank": 7,
+      "vulnerability": "Reentrancy Attacks",
+      "occurrence_count": "18",
+      "total_loss_millions": 267.6,
+      "percentage_of_total": "3.0%",
+      "description": "Malicious proposals and voting manipulation.  Mitigations include Checks-Effects-Interactions pattern, Reentrancy guards, OpenZeppelin ReentrancyGuard, Mutex locks, State variable updates before external calls, Function modifiers for reentrancy protection, Call stack depth limits, Gas limit restrictions, Pull payment patterns, Withdrawal pattern implementation, State machine patterns, Access control modifiers, External call isolation, Atomic operations, Transaction ordering protection, Cross-function reentrancy guards, Read-only reentrancy protection, View function reentrancy guards, Static analysis tools, Formal verification, Comprehensive testing suites, Code audits, Emergency pause mechanisms, Circuit breakers, Fail-safe defaults, Input validation, Gas optimization, Assembly-level protections, Custom reentrancy detection, Multi-block transaction requirements, Time-based restrictions",
+      "examples": [
+        {
+          "name": "Beanstalk Farms",
+          "date": "2022-04-17",
+          "loss_millions": 182.0,
+          "details": "Flash loan governance takeover",
+          "reference": "https://cointelegraph.com/news/beanstalk-farms-loses-182m-in-defi-governance-exploit"
+        },
+        {
+          "name": "Compound Finance",
+          "date": "2024",
+          "loss_millions": 24.0,
+          "details": "Governance manipulation",
+          "reference": "Research data"
+        },
+        {
+          "name": "Tornado Cash",
+          "date": "2023-05-20",
+          "loss_millions": 2.1,
+          "details": "Hidden self-destruct in proposal",
+          "reference": "https://decrypt.co/140932/tornado-cash-governance-attacker-offers-dao-new-lifeline-expensive-lesson"
+        },
+        {
+          "name": "Build Finance DAO",
+          "date": "2022-02",
+          "loss_millions": 0.47,
+          "details": "Token accumulation attack",
+          "reference": "Research data"
+        },
+        {
+          "name": "Others",
+          "date": "Various",
+          "loss_millions": 60.03,
+          "details": "Various governance exploits",
+          "reference": "Various sources"
+        }
+      ]
+    },
+    {
+      "rank": 8,
+      "vulnerability": "Bridge Vulnerabilities",
+      "occurrence_count": "12",
+      "total_loss_millions": 2174.0,
+      "percentage_of_total": "24.6%",
+      "description": "Exploits targeting cross-chain bridge protocols.  Mitigations include Multi-signature validation, Timelock delays, Cross-chain oracle verification, Validator set diversity, Slashing conditions, Fraud proofs, Optimistic verification, Zero-knowledge proofs, Merkle tree validation, Block header verification, Consensus mechanism security, Validator rotation, Economic security guarantees, Withdrawal limits, Velocity checks, Anomaly detection, Circuit breakers, Emergency pause mechanisms, Multi-oracle price feeds, Cross-chain message authentication, Replay attack prevention, Nonce validation, Cryptographic signature verification, Validator bonding requirements, Dispute resolution mechanisms, Finality confirmation requirements, Cross-chain state synchronization, Bridge operator monitoring, Decentralized validation networks, Trusted execution environments, Hardware security modules, Multi-party computation, Threshold cryptography, Validator reputation systems, Economic incentive alignment, Cross-chain communication protocols, Bridge insurance mechanisms, Governance oversight, Security audits, Formal verification, Penetration testing",
+      "examples": [
+        {
+          "name": "Ronin Bridge",
+          "date": "2022-03",
+          "loss_millions": 624.0,
+          "details": "Validator key compromise by Lazarus Group",
+          "reference": "Rekt leaderboard"
+        },
+        {
+          "name": "Poly Network",
+          "date": "2021-08",
+          "loss_millions": 611.0,
+          "details": "Cross-chain relay vulnerability",
+          "reference": "Rekt leaderboard"
+        },
+        {
+          "name": "Wormhole Bridge",
+          "date": "2022-02",
+          "loss_millions": 326.0,
+          "details": "Signature verification bypass",
+          "reference": "Rekt leaderboard"
+        },
+        {
+          "name": "Nomad Bridge",
+          "date": "2022-08",
+          "loss_millions": 190.0,
+          "details": "Routine update allowed users to withdraw more than deposited",
+          "reference": "https://shardeum.org/blog/defi-hacks/"
+        },
+        {
+          "name": "Horizon Bridge",
+          "date": "2022-06",
+          "loss_millions": 100.0,
+          "details": "Harmony ecosystem bridge exploit",
+          "reference": "https://shardeum.org/blog/defi-hacks/"
+        },
+        {
+          "name": "Orbit Chain",
+          "date": "2024-01-01",
+          "loss_millions": 80.0,
+          "details": "Cross-chain bridge exploit draining ETH and DAI",
+          "reference": "https://decrypt.co/297206/largest-crypto-exploits-hacks-2024"
+        },
+        {
+          "name": "Others",
+          "date": "Various",
+          "loss_millions": 243.0,
+          "details": "Multiple bridge exploits",
+          "reference": "Various sources"
+        }
+      ]
+    },
+    {
+      "rank": 9,
+      "vulnerability": "Access Control Failures",
+      "occurrence_count": "15",
+      "total_loss_millions": 1269.5,
+      "percentage_of_total": "14.4%",
+      "description": "Improper privilege management and authorization.  Mitigations include Role-based access control (RBAC), Multi-signature requirements, OpenZeppelin AccessControl, Ownable pattern implementation, Admin key rotation, Timelock controllers, Governance-based access management, Principle of least privilege, Access control modifiers, Permission granularity, Role hierarchy systems, Temporary access grants, Access revocation mechanisms, Emergency access controls, Guardian roles, Decentralized access management, Multi-party authorization, Threshold signatures, Access audit logging, Permission verification, Role assignment validation, Access control testing, Privileged function protection, Admin function restrictions, Ownership transfer controls, Access control inheritance, Function-level permissions, Contract upgrade permissions, Emergency pause authorities, Access control monitoring, Permission change notifications, Role-based function restrictions, Access control circuit breakers, Delegated authority limits, Administrative action delays, Access control formal verification, Permission boundary enforcement, Role expiration mechanisms, Access control anomaly detection, Multi-level authorization, Access control governance",
+      "examples": [
+        {
+          "name": "FTX",
+          "date": "2022-11",
+          "loss_millions": 447.0,
+          "details": "Private keys stored without encryption, sim-swap attack",
+          "reference": "https://medium.com/coinmonks/the-2024-crypto-crime-report-a7c621589510"
+        },
+        {
+          "name": "PlayDapp",
+          "date": "2024-02",
+          "loss_millions": 290.0,
+          "details": "Access control vulnerability in minting",
+          "reference": "https://www.halborn.com/blog/post/year-in-review-the-biggest-defi-hacks-of-2024"
+        },
+        {
+          "name": "Gala Games",
+          "date": "2024-05",
+          "loss_millions": 216.0,
+          "details": "Compromised deployer account with mint privileges",
+          "reference": "https://www.halborn.com/blog/post/year-in-review-the-biggest-defi-hacks-of-2024"
+        },
+        {
+          "name": "Qubit Finance",
+          "date": "2022-01",
+          "loss_millions": 80.0,
+          "details": "QBridge contract allowing fake deposits",
+          "reference": "https://shardeum.org/blog/defi-hacks/"
+        },
+        {
+          "name": "GAMEE",
+          "date": "2024-01-22",
+          "loss_millions": 16.0,
+          "details": "Unauthorized smart contract access",
+          "reference": "https://medium.com/web3-writers-guild/learning-from-the-biggest-defi-hacks-of-january-2024-0caa1b4af45b"
+        },
+        {
+          "name": "Others",
+          "date": "Various",
+          "loss_millions": 220.5,
+          "details": "Multiple access control failures",
+          "reference": "Various sources"
+        }
+      ]
+    },
+    {
+      "rank": 10,
+      "vulnerability": "Malicious Insiders",
+      "occurrence_count": "8",
+      "total_loss_millions": 125.0,
+      "percentage_of_total": "1.4%",
+      "description": "Threats from rogue developers or compromised team members.  Mitigaitons include Multi-signature requirements, Separation of duties, Role-based access controls, Timelock delays, Code review processes, Background checks, Principle of least privilege, Access audit trails, Privileged access management, Key rotation policies, Insider threat monitoring, Behavioral analytics, Activity logging, Dual control mechanisms, Approval workflows, Access revocation procedures, Whistleblower programs, Security clearance levels, Administrative oversight, Governance committee oversight, Independent security audits, Continuous monitoring systems, Anomaly detection algorithms, Transaction limits, Velocity controls, Emergency response procedures, Incident response planning, Data loss prevention, Network segmentation, Zero trust architecture, Compliance monitoring, Regulatory oversight, Insurance coverage, Legal frameworks, Employment contracts, Non-disclosure agreements, Conflict of interest policies, Regular security training, Threat intelligence sharing, Vendor risk management, Third-party audits",
+      "examples": [
+        {
+          "name": "Munchables",
+          "date": "2024-03",
+          "loss_millions": 62.5,
+          "details": "North Korean developer embedded backdoor, funds mostly recovered",
+          "reference": "https://www.dlnews.com/articles/web3/ai-make-crypto-hacks-worse-as-investors-lost-23bn-in-2024/"
+        },
+        {
+          "name": "Radiant Capital",
+          "date": "2024-10",
+          "loss_millions": 53.0,
+          "details": "Developer compromised by fake contractor with malware",
+          "reference": "https://www.halborn.com/blog/post/year-in-review-the-biggest-defi-hacks-of-2024"
+        },
+        {
+          "name": "HAWK Token",
+          "date": "2024",
+          "loss_millions": 0.0,
+          "details": "Malicious insider crash (amount undisclosed)",
+          "reference": "https://threesigma.xyz/blog/exploit/2024-defi-exploits-top-vulnerabilities"
+        },
+        {
+          "name": "Others",
+          "date": "Various",
+          "loss_millions": 9.5,
+          "details": "Various insider threats",
+          "reference": "Various sources"
+        }
+      ]
+    }
+  ],
+  "key_statistics": {
+    "total_analyzed_incidents": "237+",
+    "total_losses_millions": 8836.2,
+    "largest_single_hack": {
+      "name": "Bybit",
+      "amount_millions": 1436.0,
+      "date": "2025-02-21"
+    },
+    "second_largest_2025": {
+      "name": "Cetus Protocol",
+      "amount_millions": 223.0,
+      "date": "2025-05-22"
+    },
+    "north_korean_involvement": {
+      "total_stolen_millions": 2800.0,
+      "percentage_of_total": "31.7%",
+      "major_campaigns": ["TraderTraitor", "Lazarus Group operations"]
+    },
+    "yearly_comparison": {
+      "2022": 3800.0,
+      "2023": 1150.0,
+      "2024": 2300.0,
+      "2025_ytd": 1659.0
+    },
+    "recovery_statistics": {
+      "recovered_2024": 104.0,
+      "cetus_frozen": 162.0,
+      "bybit_restored": "100% within 72 hours"
+    }
+  },
+  "trends": [
+    "Record-breaking attacks: Bybit ($1.436B) sets new theft record",
+    "Arithmetic bugs: Cetus shows how minor overflow errors can cause massive losses",
+    "North Korean dominance: Over $2.8B stolen by state-sponsored groups",
+    "CEX targeting: Shift from DeFi protocols to centralized exchanges",
+    "Rapid laundering: Bybit funds processed within 48 hours",
+    "Supply chain attacks: TraderTraitor targeting development tools",
+    "Cold wallet compromise: Previously 'safe' storage proven vulnerable",
+    "Industry collaboration: Rapid response and fund freezing improving",
+    "White-hat bounties: Becoming standard (Cetus offered $6M)",
+    "Validator intervention: Sui froze $162M showing blockchain control capabilities"
+  ],
+  "recommendations": {
+    "for_exchanges": [
+      "Implement m-of-n multi-signature for all critical operations",
+      "Segment cold storage across multiple wallets with different security levels",
+      "Deploy real-time anomaly detection for large transactions",
+      "Audit all third-party tools and supply chain dependencies",
+      "Conduct regular incident response drills"
+    ],
+    "for_smart_contracts": [
+      "Manual verification of all arithmetic operations",
+      "Use formal verification for critical functions",
+      "Multiple independent audits focusing on different aspects",
+      "Implement time delays for high-value operations",
+      "Deploy circuit breakers for anomalous activity"
+    ],
+    "for_defi_protocols": [
+      "Use decentralized oracles with multiple price sources",
+      "Implement reentrancy guards on all external calls",
+      "Add slippage protection and transaction limits",
+      "Regular security reviews of governance mechanisms",
+      "Continuous monitoring of on-chain activity"
+    ],
+    "for_users": [
+      "Verify all transaction details before signing",
+      "Use hardware wallets for significant holdings",
+      "Be cautious of social engineering attempts",
+      "Monitor protocol security announcements",
+      "Diversify across multiple platforms"
+    ]
+  },
+  "notable_response_improvements": {
+    "rapid_freezing": "Cetus froze $162M within hours",
+    "industry_support": "Bybit received bridge loans to maintain operations",
+    "law_enforcement": "FBI quickly attributed Bybit hack to North Korea",
+    "community_coordination": "Sui validators coordinated to freeze funds",
+    "recovery_programs": "White-hat bounties and negotiation becoming standard"
+  },
+  "future_concerns": [
+    "AI-powered attacks increasing sophistication",
+    "Quantum computing threats to cryptography",
+    "Supply chain attacks targeting development infrastructure",
+    "State-sponsored groups with increasing resources",
+    "Regulatory responses potentially impacting decentralization"
+  ],
+  "data_attribution": {
+    "primary_sources": [
+      "Rekt News Leaderboard",
+      "FBI/IC3 Alert PSA250226",
+      "Halborn Security Reports",
+      "Chainalysis Crypto Crime Reports",
+      "Three Sigma Vulnerability Research",
+      "Real-time incident reporting"
+    ],
+    "analysis_date": "2025-01-09",
+    "methodology": "Aggregation and categorization of publicly reported incidents with loss normalization to millions USD"
+  }
+}
